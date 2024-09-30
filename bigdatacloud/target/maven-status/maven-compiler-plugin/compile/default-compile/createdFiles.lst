@@ -1,0 +1,7 @@
+br\edu\ibmec\projeto_bigdata\bigdatacloud\model\Cliente.class
+br\edu\ibmec\projeto_bigdata\bigdatacloud\service\ClienteService.class
+br\edu\ibmec\projeto_bigdata\bigdatacloud\BigdatacloudApplication.class
+br\edu\ibmec\projeto_bigdata\bigdatacloud\controller\ClienteController.class
+br\edu\ibmec\projeto_bigdata\bigdatacloud\repository\EnderecoRepository.class
+br\edu\ibmec\projeto_bigdata\bigdatacloud\repository\ClienteRepository.class
+br\edu\ibmec\projeto_bigdata\bigdatacloud\model\Endereco.class
