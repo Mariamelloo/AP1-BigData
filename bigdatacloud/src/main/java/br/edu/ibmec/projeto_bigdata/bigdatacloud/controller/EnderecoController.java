@@ -1,6 +1,7 @@
 package br.edu.ibmec.projeto_bigdata.bigdatacloud.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,5 +43,11 @@ public class EnderecoController {
     public ResponseEntity<Void> deleteEndereco(@PathVariable Long id) {
         enderecoService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{clienteId}/enderecos")
+    public ResponseEntity<Endereco> incluir(@PathVariable("clienteId") Long clienteId, @RequestBody Endereco endereco) {
+        Endereco novoEndereco = enderecoService.createEndereco(clienteId, endereco);
+        return new ResponseEntity<>(novoEndereco, HttpStatus.CREATED);
     }
 }
