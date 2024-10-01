@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ibmec.projeto_bigdata.bigdatacloud.model.Cliente;
+import br.edu.ibmec.projeto_bigdata.bigdatacloud.model.Endereco;
 import br.edu.ibmec.projeto_bigdata.bigdatacloud.repository.ClienteRepository;
 
 
@@ -40,4 +41,14 @@ public class ClienteService {
     public void removerCliente(Long id) {
         clienteRepository.deleteById(id);
     }
+
+    public Cliente addEndereco(Long clienteId, Endereco endereco) {
+    Cliente cliente = clienteRepository.findById(clienteId)
+            .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado"));
+    
+    endereco.setCliente(cliente);  // Associa o endereço ao cliente
+    cliente.getEnderecos().add(endereco);  // Adiciona o endereço à lista de endereços do cliente
+    clienteRepository.save(cliente);  // Salva as alterações
+    return cliente;
+}
 }

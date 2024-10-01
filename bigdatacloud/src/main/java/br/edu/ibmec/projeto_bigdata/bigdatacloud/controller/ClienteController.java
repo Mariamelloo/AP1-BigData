@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ibmec.projeto_bigdata.bigdatacloud.model.Cliente;
+import br.edu.ibmec.projeto_bigdata.bigdatacloud.model.Endereco;
 import br.edu.ibmec.projeto_bigdata.bigdatacloud.service.ClienteService;
 import jakarta.validation.Valid;
 
@@ -37,4 +38,10 @@ public class ClienteController {
         clienteService.removerCliente(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/{clienteId}/enderecos")
+    public ResponseEntity<Cliente> addEndereco(@PathVariable Long clienteId, @Valid @RequestBody Endereco endereco) {
+    Cliente cliente = clienteService.addEndereco(clienteId, endereco);  
+    return ResponseEntity.status(HttpStatus.CREATED).body(cliente);
+}
 }
